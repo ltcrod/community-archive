@@ -143,11 +143,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -1641,6 +1645,15 @@ $(document).ready(function () {
 <td align="left"><a href="2021_Saag_EastEuropean.html">View</a></td>
 </tr>
 <tr class="even">
+<td align="right">22</td>
+<td align="left">2021_SaupeCurrBiol</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left"><a href="https://github.com/poseidon-framework/published_data/tree/master/2021_SaupeCurrBiol">Github</a></td>
+<td align="left"><a href="http://c107-224.cloud.gwdg.de:3000/zip_file/2021_SaupeCurrBiol">Download</a></td>
+<td align="left"><a href="2021_SaupeCurrBiol.html">View</a></td>
+</tr>
+<tr class="odd">
 <td align="right">574</td>
 <td align="left">2021_Wang_EastAsia</td>
 <td align="right">191</td>
@@ -1649,7 +1662,7 @@ $(document).ready(function () {
 <td align="left"><a href="http://c107-224.cloud.gwdg.de:3000/zip_file/2021_Wang_EastAsia">Download</a></td>
 <td align="left"><a href="2021_Wang_EastAsia.html">View</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="right">24</td>
 <td align="left">2021_Zegarac_SoutheasternEurope</td>
 <td align="right">24</td>
@@ -1658,7 +1671,7 @@ $(document).ready(function () {
 <td align="left"><a href="http://c107-224.cloud.gwdg.de:3000/zip_file/2021_Zegarac_SoutheasternEurope">Download</a></td>
 <td align="left"><a href="2021_Zegarac_SoutheasternEurope.html">View</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="right">12</td>
 <td align="left">Archaic_Humans</td>
 <td align="right">12</td>
@@ -1667,7 +1680,7 @@ $(document).ready(function () {
 <td align="left"><a href="http://c107-224.cloud.gwdg.de:3000/zip_file/Archaic_Humans">Download</a></td>
 <td align="left"><a href="Archaic_Humans.html">View</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="right">4</td>
 <td align="left">Reference_Genomes</td>
 <td align="right">0</td>
